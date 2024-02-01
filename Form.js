@@ -50,3 +50,31 @@ format.component.ts;
 // ng new Folder_name
 // cd Folder_name
 // ng serve -o
+
+
+
+directives
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+  Name:
+  <input type="text" id="name" name="name" [(ngModel)]="user.name" />
+  <br />
+  Email
+  <input type="email" id="email" name="email" [(ngModel)]="user.email" />
+  <br />
+  <button type="submit">Login</button>
+</form>
+
+
+.ts
+ user = {
+    name: '',
+    email: '',
+  };
+
+  onSubmit() {
+    console.log('this.user');
+    alert('hello' + this.user.name);
+  }
+
+
