@@ -318,3 +318,58 @@ const greeting = greet('John');
 console.log(greeting);
 
 
+Implementation of Create, Insert, Delete Operations in AngularJS.
+
+
+  <!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS CRUD Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="MainController">
+    <h1>AngularJS CRUD Example</h1>
+
+    <!-- Display the list of items -->
+    <ul>
+      <li ng-repeat="item in items">
+        {{ item }}
+        <button ng-click="deleteItem($index)">Delete</button>
+      </li>
+    </ul>
+
+    <!-- Input for adding new item -->
+    <input type="text" ng-model="newItem" placeholder="Type a new item">
+    <button ng-click="addItem()">Add Item</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+// app.js
+var app = angular.module('myApp', []);
+
+app.controller('MainController', function ($scope) {
+  // Initial list of items
+  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+  // Function to add a new item
+  $scope.addItem = function () {
+    if ($scope.newItem) {
+      $scope.items.push($scope.newItem);
+      $scope.newItem = ''; // Clear the input field
+    }
+  };
+
+  // Function to delete an item
+  $scope.deleteItem = function (index) {
+    $scope.items.splice(index, 1);
+  };
+});
+
+
+
